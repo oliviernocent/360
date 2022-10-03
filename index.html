@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Olivier Nocent" />
+    <title>A-Frame: 360° video</title>
+    <!-- A-Frame JavaScript library -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <video
+          id="sky"
+          loop
+          src="assets/beach.mp4"
+        ></video>
+      </a-assets>
+
+      <a-sphere position="0 1.6 -2" radius="0.25"></a-sphere>
+
+      <a-videosphere src="#sky"></a-videosphere>
+      
+      <a-camera>
+        <a-cursor color="yellow"></a-cursor>
+      </a-camera>
+    </a-scene>
+
+    <script>
+      var sphere = document.querySelector("a-sphere");
+      sphere.addEventListener("click", () => {
+        document
+          .querySelector(
+            document.querySelector("a-videosphere").getAttribute("src")
+          )
+          .play();
+      });
+    </script>
+  </body>
+</html>
